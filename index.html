@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Tech Hub Watches - Premium Mobile Store</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- index.html ke head section mein link karein -->
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <!-- Global Application Header -->
+    <header class="app-navbar">
+        <div class="brand-logo">SaaS Tech Cart</div>
+        <button class="cart-floating-trigger" onclick="toggleMobileCartDrawer()">
+            <span class="icon">🛒</span>
+            <span class="badge-count" id="mobile-cart-badge">0</span>
+        </button>
+    </header>
+
+    <!-- Main Mobile Workspace Context -->
+    <main class="store-viewport">
+        
+        <!-- Optimized Filter Bar Controls Panel -->
+        <section class="search-filter-dock">
+            <div class="search-input-wrapper">
+                <input type="text" id="watch-search-input" placeholder="Search premium models..." oninput="handleStorefrontStateChange()">
+            </div>
+            <div class="filter-select-wrapper">
+                <select id="watch-category-select" onchange="handleStorefrontStateChange()">
+                    <option value="all">All Watches</option>
+                    <option value="Luxury">Luxury Chronos</option>
+                    <option value="Minimalist">Minimalist</option>
+                    <option value="Sports">Sports Trackers</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Optimized Cards Grid Stream Showcase -->
+        <section id="watch-cards-grid" class="cards-responsive-stream"></section>
+        
+    </main>
+
+    <!-- Slide-Up Bottom Sheet Cart Panel Drawer Overlay -->
+    <div id="cart-bottom-sheet-overlay" class="sheet-overlay" onclick="closeCartOnOverlayClick(event)">
+        <aside class="cart-bottom-sheet">
+            <div class="sheet-drag-handle"></div>
+            <div class="sheet-header">
+                <h2>Your Shopping Cart</h2>
+                <button class="sheet-close-btn" onclick="toggleMobileCartDrawer()">✕</button>
+            </div>
+
+            <!-- Inject cart record nodes inside this container -->
+            <div id="sheet-items-scroll" class="sheet-scroll-body"></div>
+
+            <div class="sheet-footer">
+                <div class="summary-row">
+                    <span>Total Bill:</span>
+                    <span id="sheet-bill-total" class="currency-tag">$0.00</span>
+                </div>
+                <button class="checkout-action-btn" onclick="processSecureCheckout()">Complete Secure Purchase</button>
+            </div>
+        </aside>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
